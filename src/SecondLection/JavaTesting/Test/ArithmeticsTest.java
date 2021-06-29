@@ -1,11 +1,9 @@
-package SecondLection.Test;
+package SecondLection.JavaTesting.Test;
 
-import SecondLection.Calculation.Arithmetics;
+import SecondLection.JavaTesting.Calculation.Arithmetics;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 import org.junit.rules.Timeout;
-
-import static org.junit.Assert.*;
 
 public class ArithmeticsTest {
 

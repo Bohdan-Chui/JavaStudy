@@ -1,4 +1,4 @@
-package SecondLection.Calculation;
+package SecondLection.JavaTesting.Calculation;
 
 public class Arithmetics {
 
