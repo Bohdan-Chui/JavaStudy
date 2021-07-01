@@ -1,10 +1,14 @@
 package SecondLection.JavaPlay;
 
+
 public class Main {
 
     public static void main(String[] args) {
-        Controller controller = new Controller();
-        controller.processUsers();
+        // write your code here
+        //Model model = new Model();
+        View view = new View();
+        Controller controller = new Controller(new Model(), view);
 
+        controller.processUser();
     }
 }

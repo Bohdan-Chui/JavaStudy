@@ -1,55 +1,61 @@
 package SecondLection.JavaPlay;
 
-import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Created by Student on 22.02.2017.
+ */
 public class Controller {
+    private Model model;
+    private View view;
 
-    public static int BOUND = 5;
-    Model model;
-    View view;
-    boolean flag;
-    int tempValue;
-
-    Controller(){
-        this.model = new Model(this.rand());
-        this.view = new View();
-        flag = true;
+    public Controller(Model model, View view) {
+        this.model = model;
+        this.view = view;
     }
 
-    int rand(){
-        Random random = new Random();
-        return random.nextInt(BOUND);
+    // The Work method
+    public void processUser(){
+        Scanner sc = new Scanner(System.in);
 
+        model.setPrimaryBarrier(GlobalConstants.PRIMARY_MIN_BARRIER,
+                GlobalConstants.PRIMARY_MAX_BARRIER);
+
+        model.setSecretValue();
+        System.out.println(model.getSecretValue());
+
+        while (model.checkValue(inputIntValueWithScanner(sc)));
+
+        view.printMessage(View.CONGRATULATION + model.getSecretValue());
+        view.printMessage(View.YOUR_WAY + String.valueOf(model.getYourWay()));
     }
 
-    public int inputIntValueWithScanner(Scanner sc) {
-        view.printMessage(View.INPUT_INT_DATA);
-        while( ! sc.hasNextInt()) {
-            view.printMessage(View.WRONG_INPUT_INT_DATA + View.INPUT_INT_DATA);
-            sc.next();
+    private int inputIntValueWithScanner(Scanner sc) {
+        int res = 0;
+        view.printMessage(getInputIntMessage());
+        while (true) {
+            // check int-value
+            while (!sc.hasNextInt()) {
+                view.printMessage(View.WRONG_INPUT_INT_DATA + getInputIntMessage());
+                sc.next();
+            }
+            // check value into diapason
+            if ((res = sc.nextInt()) <= model.getMinBarrier() ||
+                    res >= model.getMaxBarrier()) {
+                view.printMessage(View.WRONG_INPUT_INT_DATA + getInputIntMessage());
+                continue;
+            }
+            break;
         }
-        return sc.nextInt();
+        return res;
     }
 
-    public void processUsers(){
-        Scanner scanner = new Scanner(System.in);
-
-        do{
-            tempValue = inputIntValueWithScanner(scanner);
-             if(!model.wasNumberInputBefore(tempValue)){
-                 if(model.randomIntCompare(tempValue)){
-                     flag = false;
-                 }else{
-                     model.setInputIntFromUser(tempValue);
-                 }
-             }else{
-                 view.printMessage(view.NUMBER_WAS_INPUT_BEFORE);
-             }
-
-        }while(flag);
-
-            view.printFinalResults(model.getInputIntFromUser(), model.getRandomInt(), model.getTryCounter());
+    private String getInputIntMessage() {
+        return view.concatenationString(
+                View.INPUT_INT_DATA, View.OPENS_SQUARE_BRACKET,
+                String.valueOf(model.getMinBarrier()), View.SPACE_SING,
+                String.valueOf(model.getMaxBarrier()),
+                View.CLOSING_SQUARE_BRACKET, View.SPACE_SING,
+                View.EQUAL_SING, View.SPACE_SING );
     }
-
 }

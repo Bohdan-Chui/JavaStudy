@@ -1,38 +1,53 @@
 package SecondLection.JavaPlay;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * Created by Student on 22.02.2017.
+ */
 public class Model {
+    // Data
+    private int minBarrier;
+    private int maxBarrier;
 
-    int randomInt, tryCounter;
-    int [] inputIntFromUser = new int[5];
+    private int secretValue;
 
-    Model(int number){
-        this.randomInt = number;
-        tryCounter = 0;
+    private List<Integer> yourWay = new ArrayList<Integer>();
 
+    // [1-99]
+    public void setSecretValue(){
+        secretValue = (int)Math.ceil(Math.random()*
+                (maxBarrier - minBarrier - 1) + minBarrier);
     }
 
-    void setInputIntFromUser(int number){
-        inputIntFromUser[tryCounter] = number;
-        tryCounter++;
-    }
-    int [] getInputIntFromUser(){
-        return inputIntFromUser;
-    }
-
-    boolean randomIntCompare(int number){
-        return (number == randomInt) ? true : false;
-    }
-
-    boolean wasNumberInputBefore(int number){
-        boolean flag = false;
-        for (int i = 0; i <= tryCounter - 1; i++) {
-            if (inputIntFromUser[i] == number){
-                flag = true;
-            }
+    public boolean checkValue (int value){
+        yourWay.add(value);
+        if (value == secretValue){
+            return false;
+        } else if (value > secretValue){
+            maxBarrier = value;
+        } else {
+            minBarrier = value;
         }
-        return flag;
+        return true;
     }
 
-    int getRandomInt(){ return  this.randomInt; }
-    int getTryCounter(){return this.tryCounter;}
+    public void setPrimaryBarrier(int minBarrier, int maxBarrier){
+        this.minBarrier = minBarrier;
+        this.maxBarrier = maxBarrier;
+    }
+
+    public int getSecretValue() {
+        return secretValue;
+    }
+    public int getMinBarrier() {
+        return minBarrier;
+    }
+    public int getMaxBarrier() {
+        return maxBarrier;
+    }
+    public List<Integer> getYourWay() {
+        return yourWay;
+    }
+
 }

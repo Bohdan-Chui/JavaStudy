@@ -1,39 +1,30 @@
 package SecondLection.JavaPlay;
 
+/**
+ * Created by Student on 22.02.2017.
+ */
 public class View {
+    // text constants
+    public static final String EQUAL_SING = "=";
+    public static final String SPACE_SING = " ";
+    public static final String OPENS_SQUARE_BRACKET = "[";
+    public static final String CLOSING_SQUARE_BRACKET = "]";
 
-    public static final String INPUT_INT_DATA = "Try to guess ";
+    public static final String INPUT_INT_DATA = "Input INT value ";
     public static final String WRONG_INPUT_INT_DATA = "Wrong input! Repeat please! ";
-    public static final String NUMBER_WAS_INPUT_BEFORE = "Number was input before, try again ";
-    public static final String FINALLY_GUESSED_NUMBER ="Congratulations, right answer!";
-    public static final String BEFORE_OUT_ARRAY = "You tries : ";
-    public static final String GUESSED_NUMBER = "Guessed number :";
-    public static final String NO_ATTEMPS = "Only one attemp was used";
+    public static final String CONGRATULATION = "CONGRATULATION! You WIN! Secret value = ";
+    public static final String YOUR_WAY = "YOUR WAY = ";
 
-
-    void printMessage(String message){
-        System.out.print(message);
-    }
-    void printMessage(String message,int number){
-        System.out.println(message + number);
-    }
-    void printMessage(int number){
-        System.out.print(number);
-    }
-    void printMessageln(String message){
+    // Utilities methods
+    public void printMessage (String message){
         System.out.println(message);
     }
 
-    void printFinalResults(int []array, int number, int counter){
-        printMessageln(FINALLY_GUESSED_NUMBER);
-        printMessage(GUESSED_NUMBER , number);
-        if(counter != 0){
-            printMessage(BEFORE_OUT_ARRAY);
-            for (int i = 0; i <= counter-1; i++) {
-                System.out.print(array[i]);
-                System.out.print(' ');
-            }
-        }else printMessage(NO_ATTEMPS);
+    public String concatenationString (String... message){
+        StringBuilder concatString = new StringBuilder();
+        for (String v : message){
+            concatString = concatString.append(v);
+        }
+        return new String(concatString);
     }
-
 }
