@@ -1,6 +1,5 @@
-package SecondLection.JavaTesting.Test;
-
 import SecondLection.JavaTesting.Calculation.Arithmetics;
+
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 import org.junit.rules.Timeout;
