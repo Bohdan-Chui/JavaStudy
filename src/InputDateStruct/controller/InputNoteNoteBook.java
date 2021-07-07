@@ -1,13 +1,15 @@
-package com.company.controller;
+package InputDateStruct.controller;
 
-import com.company.view.View;
+import InputDateStruct.view.View;
+
 
 import java.util.Scanner;
 
-import static com.company.controller.RegexContainer.*;
-import static com.company.controller.RegexContainer.REGEX_LOGIN;
-import static com.company.view.TextConstant.*;
-import static com.company.view.TextConstant.LOGIN_DATA;
+import static InputDateStruct.controller.RegexContainer.REGEX_LOGIN;
+import static InputDateStruct.controller.RegexContainer.REGEX_NAME_LAT;
+import static InputDateStruct.controller.RegexContainer.REGEX_NAME_UKR;
+import static InputDateStruct.view.TextConstant.FIRST_NAME;
+import static InputDateStruct.view.TextConstant.LOGIN_DATA;
 
 /**
  * Created by student on 26.09.2017.

@@ -1,6 +1,7 @@
-package com.company.controller;
+package InputDateStruct.controller;
 
-import com.company.view.View;
+import InputDateStruct.view.View;
+
 
 import java.util.Scanner;
 

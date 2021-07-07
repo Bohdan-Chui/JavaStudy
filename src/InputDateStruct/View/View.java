@@ -1,10 +1,11 @@
-package com.company.view;
+package InputDateStruct.view;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import static com.company.view.TextConstant.INPUT_STRING_DATA;
-import static com.company.view.TextConstant.WRONG_INPUT_DATA;
+import static InputDateStruct.view.TextConstant.INPUT_STRING_DATA;
+import static InputDateStruct.view.TextConstant.WRONG_INPUT_DATA;
+
 
 /**
  * Created by student on 26.09.2017.

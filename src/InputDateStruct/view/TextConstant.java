@@ -1,4 +1,4 @@
-package com.company.view;
+package InputDateStruct.view;
 
 /**
  * Created by student on 26.09.2017.

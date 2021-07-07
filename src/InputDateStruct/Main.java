@@ -1,8 +1,9 @@
-package com.company;
+package InputDateStruct;
 
-import com.company.controller.Controller;
-import com.company.model.Model;
-import com.company.view.View;
+
+import InputDateStruct.controller.Controller;
+import InputDateStruct.model.Model;
+import InputDateStruct.view.View;
 
 public class Main {
 
