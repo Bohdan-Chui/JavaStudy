@@ -1,8 +1,9 @@
-package InputDateStruct.controller;
+package com.company.controller;
 
-import InputDateStruct.model.Model;
-import InputDateStruct.view.View;
-
+import com.company.model.Model;
+import com.company.model.entity.NotUniqueLoginException;
+import com.company.model.entity.NoteBook;
+import com.company.view.View;
 
 import java.util.Scanner;
 
@@ -19,11 +20,27 @@ public class Controller {
     }
 
     public void processUser() {
-
         Scanner sc = new Scanner(System.in);
-        InputNoteNoteBook inputNoteNoteBook =
-                new InputNoteNoteBook(view, sc);
+        InputNoteNoteBook inputNoteNoteBook = new InputNoteNoteBook(view, sc);
         inputNoteNoteBook.inputNote();
+
+        NoteBook noteBook = getNoteBook(inputNoteNoteBook);
+        System.out.println(noteBook);
     }
 
+    private NoteBook getNoteBook(InputNoteNoteBook inputNoteNoteBook) {
+        NoteBook noteBook = null;
+        while(true) {
+            try {
+                noteBook = new NoteBook(inputNoteNoteBook.getFirstName(),
+                        inputNoteNoteBook.getLoginData());
+                break;
+            } catch (NotUniqueLoginException e) {
+                e.printStackTrace();
+                System.out.println("Not Unique Login " + e.getLoginData());
+                inputNoteNoteBook.inputLogin();
+            }
+        }
+        return noteBook;
+    }
 }

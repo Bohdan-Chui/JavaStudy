@@ -1,11 +1,10 @@
-package InputDateStruct.view;
+package com.company.view;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import static InputDateStruct.view.TextConstant.INPUT_STRING_DATA;
-import static InputDateStruct.view.TextConstant.WRONG_INPUT_DATA;
-
+import static com.company.view.TextConstant.INPUT_STRING_DATA;
+import static com.company.view.TextConstant.WRONG_INPUT_DATA;
 
 /**
  * Created by student on 26.09.2017.
@@ -13,20 +12,19 @@ import static InputDateStruct.view.TextConstant.WRONG_INPUT_DATA;
 public class View {
 
     // Resource Bundle Installation's
-    static String MESSAGES_BUNDLE_NAME = "messages";
+    private static String MESSAGES_BUNDLE_NAME = "messages";
     public static final ResourceBundle bundle =
             ResourceBundle.getBundle(
                     MESSAGES_BUNDLE_NAME,
-                    new Locale("ua", "UA"));  // Ukrainian
-                    //new Locale("en"));        // English
+                    //new Locale("ua", "UA"));  // Ukrainian
+                    new Locale("en"));        // English
 
     //Utilities methods
-
     /**
      *
      * @param message
      */
-    public void printMessage(String message){
+    private void printMessage(String message){
         System.out.println(message);
     }
     /**
@@ -34,14 +32,16 @@ public class View {
      * @param message
      * @return
      */
-    public String concatenationString(String... message){
-            StringBuilder concatString = new StringBuilder();
-            for(String v : message) {
-                concatString = concatString.append(v);
-            }
-            return new String(concatString);
+    private String concatenationString(String... message){
+        StringBuilder concatString = new StringBuilder();
+        for(String v : message) {concatString.append(v);}
+        return new String(concatString);
     }
 
+    /**
+     *
+     * @param message
+     */
     public void printStringInput(String message) {
         printMessage(concatenationString(
                 bundle.getString(INPUT_STRING_DATA),
